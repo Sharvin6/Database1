@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html 
+xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Pets</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Available Pets</h2>
+        <div class="row">
+            <div th:each="pet : ${pets}" class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${pet.name}">Pet Name</h5>
+                        <p class="card-text" th:text="${pet.description}">Description</p>
+                        <p class="card-text"><strong>Breed:</strong> <span th:text="${pet.breed}">Breed</span></p>
+                        <p class="card-text"><strong>Age:</strong> <span th:text="${pet.age}">Age</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center py-3">
+        <p>&copy; 2024 Pet Adoption Matching Platform</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

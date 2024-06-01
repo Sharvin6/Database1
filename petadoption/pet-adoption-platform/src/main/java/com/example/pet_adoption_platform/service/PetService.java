@@ -10,7 +10,7 @@ import com.example.pet_adoption_platform.repository.PetTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-
+import java.util.Optional;
 
 @Service
 public class PetService {
@@ -38,5 +38,14 @@ public class PetService {
 
     public List<Pet> getPetsByBreed(PetBreed breed) {
         return petRepository.findByPetBreed(breed);
+    }
+
+    public Pet getPetById(Integer id) {
+        return petRepository.findById(id).orElse(null);
+    }
+    
+    public Pet getPetById(int id) {
+        Optional<Pet> pet = petRepository.findById(id);
+        return pet.orElse(null); // Return the Pet object if found, otherwise null
     }
 }

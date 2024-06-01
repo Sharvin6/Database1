@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="'Details of ' + ${breed.name}">Breed Details</title>
+    <title>Breed Details</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .container {
@@ -20,11 +20,15 @@
             border-radius: 8px;
             margin-bottom: 10px;
         }
+        .btn-adopt {
+            display: flex;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Pet Adoption</a>
+        <a class="navbar-brand" href="#" th:href="@{/}">Pet Adoption</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,9 +41,6 @@
                     <a class="nav-link" href="#" th:href="@{/pets}">Pets <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Adoption Process</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#">Contact Us</a>
                 </li>
             </ul>
@@ -47,15 +48,20 @@
     </nav>
     <div class="container">
         <h1 class="text-center" th:text="'Details of ' + ${breed.name}">Breed Details</h1>
+        <h2 class="text-center" th:text="'Number of pets: ' + ${pets.size()}">Number of pets</h2>
         <div class="row">
             <div th:each="pet : ${pets}" class="col-md-4 pet">
                 <div class="card">
                     <img src="/images/download.jpg" alt="Pet image" class="card-img-top pet-image">
                     <div class="card-body">
                         <h5 class="card-title pet-name" th:text="${pet.name}">Pet Name</h5>
-                        <p class="card-text" th:text="'Age: ' + ${pet.age}">Age</p>
-                        <p class="card-text" th:text="'Gender: ' + ${pet.gender}">Gender</p>
-                        <p class="card-text" th:text="${pet.description}">Description</p>
+                        <p class="card-text" th:text="'Age: ' + ${pet.age}">Pet Age</p>
+                        <p class="card-text" th:text="'Gender: ' + ${pet.gender}">Pet Gender</p>
+                        <p class="card-text" th:text="'Description: ' + ${pet.description}">Pet Description</p>
+                        <p class="card-text" th:text="'Fee: ' + ${pet.fee}">Pet Fee</p>
+                        <div class="btn-adopt">
+                            <a th:href="@{/adopt-form/{id}(id=${pet.id})}" class="btn btn-success">Adopt Now</a>
+                        </div>
                     </div>
                 </div>
             </div>

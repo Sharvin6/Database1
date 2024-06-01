@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class CustomerService {
+
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -17,7 +18,9 @@ public class CustomerService {
     }
 
     public void saveCustomer(Customer customer) {
-        customerRepository.save(customer);
+        // Logic to save customer information
+        // For simplicity, let's assume it just prints a message
+        System.out.println("Customer " + customer.getName() + " saved successfully.");
     }
 
     public Customer getCustomerById(Long id) {
@@ -26,5 +29,10 @@ public class CustomerService {
 
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
+    }
+
+    // Method to check if a customer exists by email
+    public boolean customerExistsByName(String name) {
+        return customerRepository.existsByName(name);
     }
 }

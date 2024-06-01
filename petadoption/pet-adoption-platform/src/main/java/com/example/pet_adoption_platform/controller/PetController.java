@@ -1,9 +1,12 @@
 package com.example.pet_adoption_platform.controller;
 
+import com.example.pet_adoption_platform.model.AdoptionForm;
 import com.example.pet_adoption_platform.model.Pet;
 import com.example.pet_adoption_platform.model.PetBreed;
 import com.example.pet_adoption_platform.model.PetType;
 import com.example.pet_adoption_platform.service.PetService;
+import com.example.pet_adoption_platform.util.IdGenerator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,5 +41,18 @@ public class PetController {
         model.addAttribute("breed", breed);
         model.addAttribute("pets", pets);
         return "breed-details";
+    }
+
+    @GetMapping("/adopt/{petId}")
+    public String showAdoptionForm(@PathVariable int petId, Model model) {
+        Pet pet = petService.getPetById(petId);
+        if (pet == null) {
+            return "error/404"; // Handle case where pet is not found
+        }
+        AdoptionForm adoptionForm = new AdoptionForm();
+        adoptionForm.setCustomerId(IdGenerator.generateRandomId());
+        model.addAttribute("pet", pet);
+        model.addAttribute("adoptionForm", new AdoptionForm()); // Assuming AdoptionForm is your form backing object
+        return "adopt-form"; // Ensure this matches your actual HTML file name
     }
 }

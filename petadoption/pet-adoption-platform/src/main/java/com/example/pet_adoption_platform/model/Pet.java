@@ -17,6 +17,7 @@ public class Pet {
     private String gender;
     private String color;
     private String description;
+    private double fee; 
 
     @ManyToOne
     @JoinColumn(name = "pet_type_id")
@@ -90,6 +91,13 @@ public class Pet {
         this.petBreed = petBreed;
     }
 
+    public double getFee() {
+        return fee;
+    }
+
+    public void setFee(double fee) {
+        this.fee = fee;
+    }
     // Getters and Setters
 
     

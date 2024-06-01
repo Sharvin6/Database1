@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Adopt a Pet</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 40px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Pet Adoption</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/pets}">Pets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="text-center">Adopt a Pet</h1>
+        <form th:action="@{/submit-adoption}" th:object="${adoptionForm}" method="post">
+            <div class="form-group">
+                <label for="customerId">Customer ID</label>
+                <input type="text" class="form-control" id="customerId" name="customerId" th:field="*{customerId}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="customerName">Your Name</label>
+                <input type="text" class="form-control" id="customerName" name="customerName" th:field="*{customerName}" required>
+            </div>
+            <div class="form-group">
+                <label for="customerEmail">Your Email</label>
+                <input type="email" class="form-control" id="customerEmail" name="customerEmail" th:field="*{customerEmail}" required>
+            </div>
+            <div class="form-group">
+                <label for="customerPhone">Your Phone Number</label>
+                <input type="tel" class="form-control" id="customerPhone" name="customerPhone" th:field="*{customerPhone}" required>
+            </div>
+            <div class="form-group">
+                <label for="customerAddress">Your Address</label>
+                <textarea class="form-control" id="customerAddress" name="customerAddress" rows="4" th:field="*{customerAddress}" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="petId">Pet ID</label>
+                <input type="text" class="form-control" id="petId" name="petId" th:value="${pet.id}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="petName">Pet Name</label>
+                <input type="text" class="form-control" id="petName" name="petName" th:value="${pet.name}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="petBreed">Pet Breed</label>
+                <input type="text" class="form-control" id="petBreed" name="petBreed" th:value="${pet.petBreed.name}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="petType">Pet Type</label>
+                <input type="text" class="form-control" id="petType" name="petType" th:value="${pet.petType.type}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="petFee">Pet Fee</label>
+                <input type="text" class="form-control" id="petFee" name="petFee" th:value="${pet.fee}" readonly>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

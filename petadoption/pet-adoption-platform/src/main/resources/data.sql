@@ -98,3 +98,19 @@ CREATE TABLE adopted_pet (
 INSERT INTO adopted_pet (id, customer_id, customer_name, pet_id, pet_type, pet_breed, pet_name, adoption_date, fee) VALUES
 (1, 1, 'John Doe', 1, 'Dog', 'German Shepherd', 'Max', '2024-05-30', 300),
 (2, 2, 'Jane Smith', 4, 'Cat', 'Maine Coon', 'Lucy', '2024-06-01', 400);
+
+
+CREATE TABLE IF NOT EXISTS staff (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20)
+);
+
+INSERT INTO staff (username, password, name, email, phone) VALUES
+('john_doe', 'password123', 'John Doe', 'john@example.com', '123-456-7890'),
+('jane_smith', 'password456', 'Jane Smith', 'jane@example.com', '987-654-3210'),
+('sam_wilson', 'password789', 'Sam Wilson', 'sam@example.com', '555-666-7777');
+

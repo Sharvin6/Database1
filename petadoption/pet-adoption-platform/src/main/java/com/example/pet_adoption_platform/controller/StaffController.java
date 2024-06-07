@@ -5,12 +5,7 @@ import com.example.pet_adoption_platform.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StaffController {
@@ -66,7 +61,7 @@ public class StaffController {
         return "staff-edit-list";
     }
 
-    @GetMapping("/staff/edit/{id}")
+    @GetMapping("/staff/edit/{id}c")
     public String showEditPage(@PathVariable("id") Long id, Model model) {
         Staff staff = staffService.getStaffById(id);
         if (staff != null) {
@@ -94,17 +89,18 @@ public class StaffController {
         return "redirect:/staff/edit";
     }
 
-        @GetMapping("/delete")
+    @GetMapping("/staff/delete")
     public String showDeletePage(Model model) {
         model.addAttribute("staffList", staffService.getAllStaff());
         return "staff-delete";
     }
 
-    @PostMapping("/delete/{id}")
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/staff/delete/{id}")
     public String deleteStaff(@PathVariable("id") Long id) {
         staffService.deleteStaffById(id);
         return "redirect:/staff/delete";
     }
+
+    
 
 }

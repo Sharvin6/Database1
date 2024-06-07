@@ -3,8 +3,6 @@ package com.example.pet_adoption_platform.controller;
 import com.example.pet_adoption_platform.model.AdoptionForm;
 import com.example.pet_adoption_platform.model.Customer;
 import com.example.pet_adoption_platform.model.Pet;
-import com.example.pet_adoption_platform.model.PetBreed;
-import com.example.pet_adoption_platform.model.PetType;
 import com.example.pet_adoption_platform.service.AdoptionService;
 import com.example.pet_adoption_platform.service.CustomerService;
 import com.example.pet_adoption_platform.service.PetService;

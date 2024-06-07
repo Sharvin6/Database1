@@ -18,6 +18,9 @@ public class PetType {
     @OneToMany(mappedBy = "petType")
     private List<PetBreed> breeds;
 
+    @OneToMany(mappedBy = "petType")
+    private List<Pet> pets;
+
     // Getters and Setters
     public int getId() {
         return id;
@@ -42,4 +45,13 @@ public class PetType {
     public void setBreeds(List<PetBreed> breeds) {
         this.breeds = breeds;
     }
+
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
+    }
+    
 }

@@ -1,11 +1,14 @@
 package com.example.pet_adoption_platform.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.JoinColumn;
 
 @Entity
@@ -18,6 +21,9 @@ public class PetBreed {
     @ManyToOne
     @JoinColumn(name = "pet_type_id")
     private PetType petType;
+
+    @OneToMany(mappedBy = "petBreed")
+    private List<Pet> pets;
 
     public int getId() {
         return id;

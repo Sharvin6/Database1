@@ -22,18 +22,36 @@
         </div>
     </nav>
     <div class="container">
-        <h2>Staff Management</h2>
-        <ul>
-            <li><a th:href="@{/staff/list}">List of Staff</a></li>
-            <li><a th:href="@{/staff/create}">Create Staff</a></li>
-            <li><a th:href="@{/staff/edit}">Edit Staff</a></li>
-            <li><a th:href="@{/staff/delete}">Delete Staff</a></li>
-            <li><a th:href="@{/staff/listofpets}">List of Pets</a></li>
-            <li><a th:href="@{/staff/createpet}">Create Pet</a></li> <!-- New line for creating a pet -->
-            <li><a th:href="@{/pet-details}">Edit Pet</a></li>
-            <li><a th:href="@{/staff/delete-pet}">Delete Pet</a></li>
-
-        </ul>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Staff Management</h2>
+                <ul>
+                    <li><a th:href="@{/staff/list}">List of Staff</a></li>
+                    <li><a th:href="@{/staff/create}">Create Staff</a></li>
+                    <li><a th:href="@{/staff/edit}">Edit Staff</a></li>
+                    <li><a th:href="@{/staff/delete}">Delete Staff</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Pet Management</h2>
+                <ul>
+                    <li><a th:href="@{/staff/listofpets}">List of Pets</a></li>
+                    <li><a th:href="@{/staff/createpet}">Create Pet</a></li>
+                    <li><a th:href="@{/pet-details}">Edit Pet</a></li>
+                    <li><a th:href="@{/staff/delete-pet}">Delete Pet</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Customer Management</h2>
+                <ul>
+                    <li><a th:href="@{/customer-adoption-details}">Customer Adoption Details</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html>

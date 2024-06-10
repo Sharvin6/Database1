@@ -35,6 +35,10 @@ public class PetService {
         return petBreedRepository.findById(id).orElse(null);
     }
 
+    public PetType getPetTypeById(int id) {
+        return petTypeRepository.findById(id).orElse(null);
+    }
+
     public List<Pet> getPetsByBreed(PetBreed breed) {
         return petRepository.findByPetBreed(breed);
     }

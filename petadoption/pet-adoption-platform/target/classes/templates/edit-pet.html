@@ -13,8 +13,7 @@
 </nav>
 <div class="container">
     <h2>Edit Pet</h2>
-    <h2 th:text="'Number of pets: ' + ${pets.size()}">Number of pets</h2>
-    <form th:object="${pet}" th:action="@{/update-pet}" method="post">
+    <form th:object="${pet}" th:action="@{/update-pet}" method="post" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}">
         <div class="form-group">
             <label for="name">Name:</label>
@@ -46,12 +45,20 @@
             <input type="text" class="form-control" id="color" th:field="*{color}" placeholder="Enter pet color">
         </div>
         <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="text" class="form-control" id="age" th:field="*{age}" placeholder="Enter pet age">
+        </div>
+        <div class="form-group">
             <label for="description">Description:</label>
             <textarea class="form-control" id="description" th:field="*{description}" placeholder="Enter pet description"></textarea>
         </div>
         <div class="form-group">
             <label for="fee">Fee:</label>
             <input type="number" class="form-control" id="fee" th:field="*{fee}" placeholder="Enter pet fee">
+        </div>
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" class="form-control" id="image" name="image">
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

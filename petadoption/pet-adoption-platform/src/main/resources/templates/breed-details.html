@@ -3,9 +3,24 @@
 <head>
     <title>Breed Details</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Forum&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Forum', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://wallpapers.com/images/featured/dog-wj7msvc5kj9v6cyy.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8) !important;
+        }
         .container {
             margin-top: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
         }
         .pet {
             margin-bottom: 20px;
@@ -41,7 +56,7 @@
                     <a class="nav-link" href="#" th:href="@{/pets}">Pets <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="/contact">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -52,13 +67,14 @@
         <div class="row">
             <div th:each="pet : ${pets}" class="col-md-4 pet">
                 <div class="card">
-                    <img src="/images/download.jpg" alt="Pet image" class="card-img-top pet-image">
+                    <img th:src="@{${pet.image_url}}" alt="Image of pet" class="card-img-top pet-image">
                     <div class="card-body">
                         <h5 class="card-title pet-name" th:text="${pet.name}">Pet Name</h5>
                         <p class="card-text" th:text="'Age: ' + ${pet.age}">Pet Age</p>
                         <p class="card-text" th:text="'Gender: ' + ${pet.gender}">Pet Gender</p>
+                        <p class="card-text" th:text="'Color: ' + ${pet.color}">Pet Color</p>
                         <p class="card-text" th:text="'Description: ' + ${pet.description}">Pet Description</p>
-                        <p class="card-text" th:text="'Fee: ' + ${pet.fee}">Pet Fee</p>
+                        <p class="card-text" th:text="'Fee: RM' + ${pet.fee}">Pet Fee</p>
                         <div class="btn-adopt">
                             <a th:href="@{/adopt-form/{id}(id=${pet.id})}" class="btn btn-success">Adopt Now</a>
                         </div>

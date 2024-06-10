@@ -18,6 +18,7 @@ public class Pet {
     private String color;
     private String description;
     private double fee; 
+    private String image_url; 
 
     @ManyToOne
     @JoinColumn(name = "pet_type_id")
@@ -101,6 +102,14 @@ public class Pet {
         this.fee = fee;
     }
     // Getters and Setters
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
 
     
 }

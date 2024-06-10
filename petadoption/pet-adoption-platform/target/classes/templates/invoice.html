@@ -84,7 +84,7 @@
                     <a class="nav-link" th:href="@{/pets}">Pets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="/contact">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -127,7 +127,7 @@
                 <td><span th:text="${pet.name}"></span></td>
                 <td><span th:text="${pet.petBreed.name}"></span></td>
                 <td><span th:text="${pet.petType.type}"></span></td>
-                <td>$<span th:text="${pet.fee}"></span></td>
+                <td>RM<span th:text="${pet.fee}"></span></td>
             </tr>
             <tr class="heading">
                 <td>Payment</td>
@@ -141,21 +141,21 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>$<span th:text="${pet.fee}"></span></td>
+                <td>RM<span th:text="${pet.fee}"></span></td>
             </tr>
             <tr class="item last">
                 <td>Service Tax</td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>$5.00</td>
+                <td>RM5.00</td>
             </tr>
             <tr class="total">
                 <td></td>
                 <td></td>
                 <td></td>
                 <td>Total:</td>
-                <td>$<span th:text="${pet.fee + 5}"></span></td>
+                <td>RM<span th:text="${pet.fee + 5}"></span></td>
             </tr>
         </table>
     </div>

@@ -13,7 +13,7 @@
     </nav>
     <div class="container">
         <h2>Create Pet</h2>
-        <form th:action="@{/staff/createpet}" th:object="${pet}" method="post">
+        <form th:action="@{/staff/createpet}" th:object="${pet}" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Enter pet name">
@@ -44,12 +44,20 @@
                 <input type="text" class="form-control" id="color" th:field="*{color}" placeholder="Enter pet color">
             </div>
             <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" class="form-control" id="age" th:field="*{age}" placeholder="Enter pet age">
+            </div>
+            <div class="form-group">
                 <label for="description">Description:</label>
                 <textarea class="form-control" id="description" th:field="*{description}" placeholder="Enter pet description"></textarea>
             </div>
             <div class="form-group">
                 <label for="fee">Fee:</label>
                 <input type="number" class="form-control" id="fee" th:field="*{fee}" placeholder="Enter pet fee">
+            </div>
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" class="form-control-file" id="image" name="image">
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>

@@ -23,9 +23,11 @@ CREATE TABLE IF NOT EXISTS pet (
     pet_type_id INT,
     pet_breed_id INT,
     fee DOUBLE,
+    image_url VARCHAR(255), -- Add this line
     FOREIGN KEY (pet_type_id) REFERENCES pet_type(id),
     FOREIGN KEY (pet_breed_id) REFERENCES pet_breed(id)
 );
+
 
 -- Create table for customers
 CREATE TABLE IF NOT EXISTS customer (
@@ -77,28 +79,28 @@ INSERT INTO pet_breed (id, name, pet_type_id) VALUES
 (6, 'Maine Coon', 2);
 
 -- Inserting sample pets (Dogs)
-INSERT INTO pet (name, age, gender, color, description, pet_type_id, pet_breed_id, fee) VALUES
-('Max', 3, 'Male', 'Black and Tan', 'Friendly and protective', 1, 1, 300),
-('Bella', 2, 'Female', 'Sable', 'Loyal and smart', 1, 1, 350),
-('Rex', 4, 'Male', 'Black', 'Strong and brave', 1, 1, 320),
-('Lucy', 5, 'Female', 'Black and Mahogany', 'Gentle and calm', 1, 2, 400),
-('Rocky', 3, 'Male', 'Black and Tan', 'Energetic and fearless', 1, 2, 380),
-('Zoe', 4, 'Female', 'Black and Rust', 'Loving and playful', 1, 2, 370),
-('Daisy', 2, 'Female', 'White and Gold', 'Cheerful and affectionate', 1, 3, 250),
-('Buddy', 3, 'Male', 'Black and White', 'Friendly and playful', 1, 3, 260),
-('Lola', 1, 'Female', 'Brown and White', 'Sweet and calm', 1, 3, 240);
+INSERT INTO pet (name, age, gender, color, description, pet_type_id, pet_breed_id, fee, image_url) VALUES
+('Max', 3, 'Male', 'Black and Tan', 'Friendly and protective', 1, 1, 300, '/images/Max_German Shepherd.webp'),
+('Bella', 2, 'Female', 'Brown', 'Loyal and smart', 1, 1, 350, '/images/Bella_German Shepherd.jpeg'),
+('Rex', 4, 'Male', 'Black and Tan', 'Strong and brave', 1, 1, 320, '/images/Rex_German Shepherd.jpeg'),
+('Lucy', 5, 'Female', 'Black and Tan', 'Gentle and calm', 1, 2, 400, '/images/Lucy_Rottweiler.jpeg'),
+('Rocky', 3, 'Male', 'Black and Rust', 'Energetic and fearless', 1, 2, 380, '/images/Rocky_Rottweiler.jpeg'),
+('Zoe', 4, 'Female', 'Black and Rust', 'Loving and playful', 1, 2, 370, '/images/Zoe_Rottweiler.jpeg'),
+('Daisy', 2, 'Female', 'Black and White', 'Cheerful and affectionate', 1, 3, 250, '/images/Daisy_Shih Tzu.jpeg'),
+('Buddy', 3, 'Male', 'White and Rust', 'Friendly and playful', 1, 3, 260, '/images/Buddy_Shih Tzu.jpeg'),
+('Lola', 1, 'Female', 'Brown and White', 'Sweet and calm', 1, 3, 240, '/images/Lola_Shih Tzu.jpeg');
 
 -- Inserting sample pets (Cats)
-INSERT INTO pet (name, age, gender, color, description, pet_type_id, pet_breed_id, fee) VALUES
-('Whiskers', 4, 'Female', 'White', 'Gentle and affectionate', 2, 4, 500),
-('Shadow', 3, 'Male', 'Blue', 'Quiet and calm', 2, 4, 520),
-('Mittens', 2, 'Female', 'Cream', 'Playful and curious', 2, 4, 510),
-('Simba', 3, 'Male', 'Seal Point', 'Loyal and loving', 2, 5, 600),
-('Nala', 2, 'Female', 'Blue Point', 'Graceful and elegant', 2, 5, 620),
-('Leo', 4, 'Male', 'Chocolate Point', 'Smart and curious', 2, 5, 610),
-('Cleo', 3, 'Female', 'Brown Tabby', 'Playful and sociable', 2, 6, 700),
-('Oscar', 4, 'Male', 'Blue Tabby', 'Calm and friendly', 2, 6, 720),
-('Luna', 2, 'Female', 'Red Tabby', 'Curious and adventurous', 2, 6, 710);
+INSERT INTO pet (name, age, gender, color, description, pet_type_id, pet_breed_id, fee, image_url) VALUES
+('Whiskers', 4, 'Female', 'White', 'Gentle and affectionate', 2, 4, 500, '/images/Whiskers_Persian.jpeg'),
+('Shadow', 3, 'Male', 'Black and White', 'Quiet and calm', 2, 4, 520, '/images/Shadow_Persian.jpeg'),
+('Mittens', 2, 'Female', 'Cream', 'Playful and curious', 2, 4, 510, '/images/Mittens_Persian.jpeg'),
+('Simba', 3, 'Male', 'Seal Point', 'Loyal and loving', 2, 5, 600, '/images/Simba_Siamese.jpeg'),
+('Nala', 2, 'Female', 'Seal Point', 'Graceful and elegant', 2, 5, 620, '/images/Nala_Siamese.jpeg'),
+('Leo', 4, 'Male', 'Chocolate Point', 'Smart and curious', 2, 5, 610, '/images/Leo_Siamese.jpeg'),
+('Cleo', 3, 'Female', 'Brown Tabby', 'Playful and sociable', 2, 6, 700, '/images/Cleo_Maine Coon.jpeg'),
+('Oscar', 4, 'Male', 'Blue Tabby', 'Calm and friendly', 2, 6, 720, '/images/Oscar_Maine Coon.jpeg'),
+('Luna', 2, 'Female', 'Red Tabby', 'Curious and adventurous', 2, 6, 710, '/images/Luna_Maine Coon.jpeg');
 
 
 -- Insert sample customer details

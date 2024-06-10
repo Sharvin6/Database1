@@ -3,9 +3,30 @@
 <head>
     <title>Pets</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Forum&display=swap">
     <style>
+        body {
+            font-family: 'Forum', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://wallpapers.com/images/featured/dog-wj7msvc5kj9v6cyy.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: black !important;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
         .container {
             margin-top: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
         }
         .pet-type {
             margin-bottom: 20px;
@@ -21,6 +42,7 @@
             min-width: 200px;
         }
         .pet-name {
+            font-family: 'Abril Fatface', cursive;
             font-weight: bold;
             text-align: center;
         }
@@ -29,6 +51,14 @@
             height: auto;
             border-radius: 8px;
             margin-bottom: 10px;
+        }
+        h1, h2 {
+            font-family: 'Abril Fatface', cursive;
+            font-weight: bold;
+        }
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -47,7 +77,7 @@
                     <a class="nav-link" href="#" th:href="@{/pets}">Pets <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="/contact">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -59,9 +89,9 @@
                 <h2 class="border-bottom">Dog Breeds</h2>
                 <div th:each="typeEntry : ${petTypes}" th:if="${typeEntry.type == 'Dog'}" class="pet-type">
                     <div class="pet-breed-row">
-                        <div th:each="breed : ${typeEntry.breeds}" class="pet-breed">
+                        <div th:each="breed, iterStat : ${typeEntry.breeds}" class="pet-breed">
                             <div class="card">
-                                <img src="/images/download.jpg" alt="Image of breed" class="card-img-top pet-image">
+                                <img th:src="${iterStat.index == 0 ? 'https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg' : iterStat.index == 1 ? 'https://cdn.britannica.com/69/234469-050-B883797B/Rottweiler-dog.jpg' : iterStat.index == 2 ? 'https://media-be.chewy.com/wp-content/uploads/2021/05/13111454/GettyImages-521009590-923x615.jpg' : '/images/default_dog.jpg'}" alt="Image of breed" class="card-img-top pet-image">
                                 <div class="card-body">
                                     <h5 class="card-title pet-name" th:text="${breed.name}">Breed</h5>
                                     <a th:href="@{/breed-details/{id}(id=${breed.id})}" class="btn btn-primary">View Details</a>
@@ -75,9 +105,9 @@
                 <h2 class="border-bottom">Cat Breeds</h2>
                 <div th:each="typeEntry : ${petTypes}" th:if="${typeEntry.type == 'Cat'}" class="pet-type">
                     <div class="pet-breed-row">
-                        <div th:each="breed : ${typeEntry.breeds}" class="pet-breed">
+                        <div th:each="breed, iterStat : ${typeEntry.breeds}" class="pet-breed">
                             <div class="card">
-                                <img src="/images/download.jpg" alt="Image of breed" class="card-img-top pet-image">
+                                <img th:src="${iterStat.index == 0 ? 'https://www.thesprucepets.com/thmb/rGHMbBtaCIBzjOQJaFEeDG3ViHs=/2941x0/filters:no_upscale():strip_icc()/persian-cats-gallery-4121944-hero-f5c237b8c6404655afb1e1bbae219ba5.jpg' : iterStat.index == 1 ? 'https://www.catster.com/wp-content/uploads/2023/11/Siamese-Cat_Andreas-LischkaPixabay.jpg' : iterStat.index == 2 ? 'https://www.thesprucepets.com/thmb/MzKr6fC-v8W4D4oz2p9wWCwAFms=/2119x0/filters:no_upscale():strip_icc()/GettyImages-1189893683-e0ff70596b3b4f0687ba573e5a671f74.jpg' : '/images/default_cat.jpg'}" alt="Image of breed" class="card-img-top pet-image">
                                 <div class="card-body">
                                     <h5 class="card-title pet-name" th:text="${breed.name}">Breed</h5>
                                     <a th:href="@{/breed-details/{id}(id=${breed.id})}" class="btn btn-primary">View Details</a>

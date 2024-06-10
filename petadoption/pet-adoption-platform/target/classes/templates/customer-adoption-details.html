@@ -39,7 +39,8 @@
                     <td th:text="${adoption.petType}"></td>
                     <td th:text="${adoption.petBreed}"></td>
                     <td th:text="${#dates.format(adoption.adoptionDate, 'dd-MM-yyyy')}"></td>
-                    <td th:text="${adoption.fee}"></td>
+                    <td>RM<span th:text="${adoption.fee}"></span></td>
+
                 </tr>
             </tbody>
         </table>

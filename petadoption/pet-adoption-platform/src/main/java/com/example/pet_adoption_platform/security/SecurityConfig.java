@@ -10,9 +10,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * Configuration class for security settings.
+ */
 @Configuration
 public class SecurityConfig {
 
+    //Configures security filters.
+     //@param http The HttpSecurity object to configure security settings.
+     //@return The configured SecurityFilterChain.
+     //@throws Exception If an error occurs during configuration.
+     
     @SuppressWarnings("deprecation")
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -37,6 +45,9 @@ public class SecurityConfig {
         return http.build();
     }
 
+    // Configures an in-memory user details manager with an admin user.
+     //@return UserDetailsService bean.
+     
     @Bean
     public UserDetailsService userDetailsService() {
         var userDetailsManager = new InMemoryUserDetailsManager();
@@ -47,10 +58,12 @@ public class SecurityConfig {
         return userDetailsManager;
     }
 
+    //Provides a password encoder bean.
+     // @return PasswordEncoder bean.
+   
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    
 }

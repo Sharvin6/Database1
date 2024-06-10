@@ -27,6 +27,7 @@ public class AdoptionController {
     @Autowired
     private AdoptionService adoptionService;
 
+    // Displays the adoption form for a specific pet.
     @GetMapping("/adopt-form/{petId}")
     public String showAdoptionForm(@PathVariable("petId") int petId, Model model) {
         Pet pet = petService.getPetById(petId);
@@ -35,25 +36,31 @@ public class AdoptionController {
         }
         model.addAttribute("pet", pet);
 
+        // Generate a random customer ID
         AdoptionForm adoptionForm = new AdoptionForm();
-        adoptionForm.setCustomerId(UUID.randomUUID().toString().substring(0, 10)); // Generate a shorter random customer ID
+        adoptionForm.setCustomerId(UUID.randomUUID().toString().substring(0, 10));
 
         model.addAttribute("adoptionForm", adoptionForm);
         return "adopt-form";
     }
 
+    // Submits the adoption form and saves the adoption details.
     @PostMapping("/submit-adoption")
     public String submitAdoptionForm(@ModelAttribute("adoptionForm") AdoptionForm adoptionForm, Model model) {
         Pet pet = petService.getPetById(adoptionForm.getPetId());
 
+        // Create a new customer with the provided information
         Customer customer = new Customer();
         customer.setName(adoptionForm.getCustomerName());
         customer.setEmail(adoptionForm.getCustomerEmail());
         customer.setAddress(adoptionForm.getCustomerAddress());
         customer.setPhone(adoptionForm.getCustomerPhone());
-        customer.setId(adoptionForm.getCustomerId()); // Set the random customer ID
+        customer.setId(adoptionForm.getCustomerId());
 
+        // Save the customer
         customerService.saveCustomer(customer);
+
+        // Save the adoption details
         adoptionService.saveAdoption(customer, pet);
 
         // Generate a random invoice ID for this adoption
@@ -69,12 +76,11 @@ public class AdoptionController {
         return "invoice";
     }
 
+    // Displays adoption details for all customers.
     @GetMapping("/customer-adoption-details")
     public String getCustomerAdoptionDetails(Model model) {
         List<AdoptedPet> adoptions = adoptionService.getAllAdoptedPets();
         model.addAttribute("adoptions", adoptions);
         return "customer-adoption-details";
     }
-
-    
 }

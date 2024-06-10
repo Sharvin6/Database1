@@ -7,32 +7,49 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service class for managing staff members.
+ */
 @Service
 public class StaffService {
 
     @Autowired
     private StaffRepository staffRepository;
 
-    // Method to authenticate a staff member
+    //Authenticates a staff member.
+     // @param username The username of the staff member.
+    // @param password The password of the staff member.
+     //@return The authenticated staff member, or null if authentication fails.
+     
     public Staff authenticate(String username, String password) {
         return staffRepository.findByUsernameAndPassword(username, password);
     }
 
-    // Method to retrieve all staff members
+    //Retrieves all staff members.
+     //@return A list of all staff members.
+    
     public List<Staff> getAllStaff() {
         return staffRepository.findAll();
     }
 
-    // Method to retrieve a staff member by their ID
+    //Retrieves a staff member by their ID.
+     //@param id The ID of the staff member.
+     // @return The staff member with the specified ID, or null if not found.
+     
     public Staff getStaffById(Long id) {
         return staffRepository.findById(id).orElse(null);
     }
 
-    // Method to save or update a staff member
+    //Saves or updates a staff member.
+     //@param staff The staff member to save or update.
+     
     public void saveStaff(Staff staff) {
         staffRepository.save(staff);
     }
 
+    //Deletes a staff member by their ID.
+     //@param id The ID of the staff member to delete.
+     
     public void deleteStaffById(Long id) {
         staffRepository.deleteById(id);
     }

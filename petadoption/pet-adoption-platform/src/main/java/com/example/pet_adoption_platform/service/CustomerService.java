@@ -23,11 +23,11 @@ public class CustomerService {
         System.out.println("Customer " + customer.getName() + " saved successfully.");
     }
 
-    public Customer getCustomerById(Long id) {
+    public Customer getCustomerById(String id) {
         return customerRepository.findById(id).orElse(null);
     }
 
-    public void deleteCustomer(Long id) {
+    public void deleteCustomer(String id) {
         customerRepository.deleteById(id);
     }
 

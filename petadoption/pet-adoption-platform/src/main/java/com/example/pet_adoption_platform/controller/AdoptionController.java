@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
@@ -66,11 +68,20 @@ public class AdoptionController {
         // Generate a random invoice ID for this adoption
         int invoiceId = UUID.randomUUID().toString().substring(0, 10).hashCode();
 
+        // Delete the adopted pet from the database
+        petService.deletePetById(pet.getId());
+
+        // Get the current system date
+         LocalDate currentDate = LocalDate.now();
+         // Format the date as "Month Day, Year" (e.g., "June 10, 2024")
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
+        String formattedDate = currentDate.format(formatter);
+
         // Pass necessary data to invoice.html
         model.addAttribute("pet", pet);
         model.addAttribute("customer", customer);
         model.addAttribute("invoiceId", invoiceId);
-        model.addAttribute("date", "January 1, 2024");
+        model.addAttribute("date", formattedDate);
 
         // Redirect to invoice.html
         return "invoice";

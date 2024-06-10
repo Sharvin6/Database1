@@ -1,11 +1,9 @@
 package com.example.pet_adoption_platform.controller;
 
-import com.example.pet_adoption_platform.model.AdoptionForm;
 import com.example.pet_adoption_platform.model.Pet;
 import com.example.pet_adoption_platform.model.PetBreed;
 import com.example.pet_adoption_platform.model.PetType;
 import com.example.pet_adoption_platform.service.PetService;
-import com.example.pet_adoption_platform.util.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -75,28 +73,6 @@ public class PetController {
         return "breed-details";
     }
 
-    // Displays the adoption form for a specific pet.
-    @GetMapping("/adopt/{petId}")
-    public String showAdoptionForm(@PathVariable int petId, Model model) {
-        // Retrieve the pet details by its ID from the service layer.
-        Pet pet = petService.getPetById(petId);
-        
-        // If the pet is not found, return an error page.
-        if (pet == null) {
-            return "error/404";
-        }
-        
-        // Create a new AdoptionForm instance with a generated customer ID.
-        AdoptionForm adoptionForm = new AdoptionForm();
-        adoptionForm.setCustomerId(IdGenerator.generateRandomId());
-        
-        // Add the pet and adoption form to the model for rendering on the adopt-form page.
-        model.addAttribute("pet", pet);
-        model.addAttribute("adoptionForm", adoptionForm);
-        
-        // Return the name of the Thymeleaf template for rendering.
-        return "adopt-form";
-    }
 
     // Displays the list of pets for staff.
     @GetMapping("/staff/listofpets")

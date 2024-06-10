@@ -39,6 +39,7 @@ public class AdoptedPet {
 
     // Getters and setters
 
+    
     // Returns the unique identifier of the adopted pet.
     public Integer getId() {
         return id;
@@ -137,13 +138,3 @@ public class AdoptedPet {
         this.customerName = customerName;
     }
 }
-
-/*
- * Explanation of Annotations and Code:
-@Entity: Indicates that this class is a JPA entity, meaning it will be mapped to a database table.
-@Id: Specifies the primary key of the entity.
-@GeneratedValue(strategy = GenerationType.IDENTITY): Specifies the primary key generation strategy. IDENTITY means that the database will automatically generate the primary key value.
-@ManyToOne: Defines a many-to-one relationship between entities.
-@JoinColumn(name = "customer_id"): Specifies the foreign key column for the customer in the AdoptedPet table.
-@JoinColumn(name = "pet_id"): Specifies the foreign key column for the pet in the AdoptedPet table.
- */
